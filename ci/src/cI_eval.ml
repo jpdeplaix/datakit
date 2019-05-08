@@ -111,6 +111,5 @@ module Make (C: CI_s.CONTEXT) = struct
     match List.fold_left partition ([], []) states with
     | [], [] -> return ()
     | [], fs -> fail "%a failed" pp_names fs
-    | ps, [] -> pending "Waiting for %a" pp_names ps
-    | ps, fs -> pending "%a failed (still waiting for %a)" pp_names fs pp_names ps
+    | ps, _ -> pending "Waiting"
 end
